@@ -1,37 +1,186 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: 100vh;
-    font-family: 'Ubuntu', sans-serif;
-    background-color: #333;
-    overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	height: 100vh;
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #333;
+	overflow: hidden;
 }
 
-button{
-    position: relative;
-    background: none;
-    margin: 20px;
-    padding: 20px 30px;
-    font-size: 30px;
-    color: #fff;
-    border: 1px solid #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    text-transform: uppercase;
+button {
+	position: relative;
+	background: none;
+	margin: 20px;
+	padding: 20px 30px;
+	font-size: 30px;
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	text-transform: uppercase;
+    /* z-index: -1; */
+}
+
+button::before,
+button::after {
+	display: block;
+	position: absolute;
+	content: '';
+	transition: all 0.5s;
+    z-index: -1;
+}
+
+.slide {
+	width: 190px;
+	height: 100px;
+}
+
+.slide::after {
+	height: 100%;
+	top: 0;
+	left: -10px;
+	border-left: 2px solid #fff;
+}
+
+.slide::before {
+	width: 100%;
+	top: -10px;
+	left: 0px;
+	border-top: 2px solid #fff;
+	transition-delay: 0.1s;
+}
+
+.slide:hover::before {
+	top: 100px;
+}
+
+.slide:hover::after {
+	left: 300px;
+}
+
+.span1,
+.span2 {
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+    transition: 0.5s
+}
+
+.span1 {
+	left: 50%;
+}
+
+.span2{
+    left: -50%;
+    transition-delay: 0.2s;
+}
+
+.slide:hover .span1{
+    left: 150%;
+}
+
+.slide:hover .span2{
+    left: 50%;
+}
+
+.slice::after, .slice::before{
+    /* position: absolute; */
+    height: 100%;
+    width: 100%;
+    background-color:rgb(81, 79, 163);
+}
+
+.slice::after{
+    top: -150%;
+    right: 0;
+}
+
+.slice::before{
+    top: 150%;
+    right: 0;
+}
+
+.slice:hover::after{
+
+    top: -50%;
+}
+
+.slice:hover::before{
+
+    top: 50%;
+}
+
+.hmm{
+    border: none;
+    transition: .5s;
+}
+
+.hmm:hover{
+    box-shadow: 2px 3px 0 rgba(255, 255, 255, .8),
+    inset 11px 6px 10px rgba(0,0,0, .2);
 
 }
 
-button::before, button::after{
-    display: block;
-    position: absolute;
-    content: '';
-    transition: all 0.5s;
+.border{
+    border-radius: 0;
+    overflow: visible;
+    transition: 0.7s;
+}
+
+.border:hover{
+    border: 1px solid transparent;
+    color: green;
+}
+
+.border::before, .border::after{
+    width: 100%;
+    height: 100%;
+}
+
+.border::after{
+    top: 0px;
+    left: 0px;
+}
+
+.border::before{
+    top: 0px;
+    left: 0px;
+}
+
+.border:hover::before{
+    top: -10px;
+    left: -10px;
+    border-left: 5px solid green;
+    border-top: 5px solid green;
+    
+}
+
+.border:hover::after{
+    top: 10px;
+    left: 10px;
+    border-right: 5px solid green;
+    border-bottom: 5px solid green;
+}
+
+.glass::before{
+    top: -30px;
+    left: -130px;
+    height: 160%;
+    width: 100px;
+    background-image: linear-gradient(-80deg, rgba(255,255,255,.3), rgba(255,255,255,0));
+    transform: rotate(20deg);
+    
+}
+
+.glass:hover::before{
+    left: 130%;
+    
 }
